@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Res | The Royal Lineage System</title>
+    
+    <style>
+        :root {
+            --primary: #15803d;
+            --dark: #020617;
+            --gold: #fbbf24;
+            --root-color: #3f2a14; /* Warna Akar */
+        }
+
+        * { box-sizing: border-box; font-family: 'Georgia', serif; transition: 0.3s; }
+        
+        body { 
+            background: var(--dark); color: white; margin: 0; 
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                              url('https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000');
+            background-size: cover; background-attachment: fixed;
+            min-height: 100vh; overflow-x: auto;
+        }
+
+        nav { background: rgba(2, 6, 23, 0.95); padding: 15px 5%; display: none; justify-content: space-between; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 1000; }
+
+        .page { display: none; padding: 40px 20px; text-align: center; }
+        .active { display: block; animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- STYLING POHON AKAR (ORGANIK) --- */
+        .tree-root-system { display: flex; flex-direction: column; align-items: center; padding: 50px 0; min-width: 1500px; }
+        
+        /* Box Anggota Melengkung */
+        .member-node {
+            background: rgba(255,255,255,0.9); color: #111;
+            padding: 12px; border-radius: 30px; border: 3px solid var(--primary);
+            width: 140px; font-size: 0.8rem; font-weight: bold;
+            box-shadow: 0 0 15px rgba(21, 128, 61, 0.4); cursor: pointer;
+        }
+        .member-node:hover { transform: scale(1.1) rotate(2deg); background: var(--gold); }
+        .head-family { width: 220px; background: #fffbeb; border: 4px solid var(--root-color); font-size: 1rem; }
+
+        /* Garis Akar & Cabang */
+        .trunk { width: 6px; height: 50px; background: var(--root-color); margin: 0 auto; border-radius: 3px; }
+        .branch-line { height: 4px; background: var(--root-color); width: 90%; margin: 0 auto; border-radius: 5px; position: relative; }
+        .sub-trunk { width: 4px; height: 30px; background: var(--primary); margin: 0 auto; }
+
+        /* Form & Login */
+        .login-card { background: white; color: #111; padding: 40px; border-radius: 25px; max-width: 400px; margin: 10vh auto; border-bottom: 10px solid var(--primary); }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 10px; }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; background: var(--dark); color: white; margin-top: 10px; }
+        .btn:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div style="color: var(--gold); font-weight: bold; font-size: 1.4rem; letter-spacing: 2px;">7Res LINEAGE</div>
+        <button onclick="location.reload()" style="background:none; border:1px solid white; color:white; cursor:pointer; padding:5px 15px; border-radius:8px;">LOGOUT</button>
+    </nav>
+
+    <div id="page-home" class="page active">
+        <div style="margin-top: 20vh;">
+            <h1 style="color: var(--gold); font-size: 5rem; margin: 0; text-shadow: 4px 4px 15px black;">7Res</h1>
+            <p style="letter-spacing: 10px; font-size: 1.2rem;">THE SACRED TREE</p>
+            <button class="btn" style="max-width: 250px; font-size: 1.1rem;" onclick="showPage('page-login')">ACCESS PORTAL</button>
+        </div>
+    </div>
+
+    <div id="page-login" class="page">
+        <div class="login-card">
+            <h2 style="color: var(--primary);">Identity Verification</h2>
+            <p style="font-size: 0.8rem; color: #666;">Silakan masuk menggunakan akun keluarga yang terdaftar.</p>
+            <input type="text" id="user-input" placeholder="Username">
+            <input type="password" id="pass-input" placeholder="Password">
+            <button class="btn" onclick="handleLogin()">Login to 7Res</button>
+        </div>
+    </div>
+
+    <div id="page-tree" class="page">
+        <div class="tree-root-system">
+            
+            <div style="display: flex; gap: 20px; justify-content: center;">
+                <div class="member-node head-family">IGNATIUS RESI OLA</div>
+                <div class="member-node head-family">CHRISTINA SEREMA PAYON</div>
+            </div>
+            
+            <div class="trunk"></div>
+            <div class="branch-line"></div>
+
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 0;">
+                <script>
+                    const familyNames = ["Anak 1", "Anak 2", "YERIMIAS OLA SUA", "Anak 4", "Anak 5", "Anak 6", "Anak 7"];
+                    for(let i=0; i<7; i++) {
+                        document.write(`
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="sub-trunk"></div>
+                                <div style="display: flex; gap: 5px; padding: 10px; border-radius: 20px; background: rgba(255,255,255,0.05);">
+                                    <div class="member-node" onclick="alert('Buka Data Anggota')">${familyNames[i]}</div>
+                                    <div class="member-node" style="border-color: #f87171; background: #fff1f2;" onclick="alert('Buka Data Pasangan')">Pasangan</div>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+
+            <div style="margin-top: 100px; color: var(--gold); font-style: italic;">
+                "Garis Keturunan yang Kuat, Mengakar di Bumi, Menjulang ke Langit"
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 50 USER DATABASE ---
+        // Kamu bisa mengganti "user1", "user2" dst dengan nama asli nanti
+        const userDB = {
+            "Figo baodai": "12345678910",
+            "efrem": "1234",
+            "yerimias": "7res2024"
+        };
+        // Generate 50 akun otomatis (User 1 - User 50)
+        for(let i=1; i<=50; i++) {
+            userDB["user" + i] = "pass" + i; 
+        }
+
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('navbar').style.display = (id === 'page-tree') ? 'flex' : 'none';
+        }
+
+        function handleLogin() {
+            const u = document.getElementById('user-input').value;
+            const p = document.getElementById('pass-input').value;
+
+            if (userDB[u] && userDB[u] === p) {
+                showPage('page-tree');
+            } else {
+                alert("Username atau Password Salah! Hubungi Admin Figo.");
+            }
+        }
+    </script>
+</body>
+</html>
